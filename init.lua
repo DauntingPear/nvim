@@ -1,0 +1,2 @@
+require("adrianbrady")
+require("telescope")
