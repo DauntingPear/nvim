@@ -27,6 +27,17 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- Navigate splits
+vim.keymap.set("n", "<leader>sh", "<C-w>h")
+vim.keymap.set("n", "<leader>sj", "<C-w>j")
+vim.keymap.set("n", "<leader>sk", "<C-w>k")
+vim.keymap.set("n", "<leader>sl", "<C-w>l")
+
+vim.keymap.set("n", "<leader>tn", "<CMD> tabnew<cr>")
+vim.keymap.set("n", "<leader>dt", "<CMD> tabclose<cr>")
+
+vim.keymap.set("n", "<leader>cd", "<cmd>lcd %:h<cr>")
+
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = 'Paste w/o reg cpy' })
 
