@@ -11,7 +11,7 @@ return require('packer').startup(function(use)
         require("toggleterm").setup()
     end}
 
-    use 'mhinz/vim-startify'
+    use "goolord/alpha-nvim"
 
     use {
         "SmiteshP/nvim-navic",
