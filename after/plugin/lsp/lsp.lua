@@ -70,9 +70,12 @@ require('mini.clue').setup({
   },
 })
 
+local navic = require("nvim-navic")
+
 lsp.on_attach(function(client, bufnr)
     local opts = {buffer = bufnr, remap = false}
 
+    navic.attach(client, bufnr)
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts, { desc = 'goto definition' })
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts, { desc = 'hov menu' })

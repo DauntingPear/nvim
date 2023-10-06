@@ -9,6 +9,10 @@ return require('packer').startup(function(use)
 
     use 'mhinz/vim-startify'
 
+    use {
+        "SmiteshP/nvim-navic",
+        requires = "neovim/nvim-lspconfig"
+    }
 
     use {
         'jedrzejboczar/possession.nvim',
