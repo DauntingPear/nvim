@@ -16,6 +16,11 @@ vim.keymap.set("n", "<leader>B", ":lua require'dap'.toggle_breakpoint()<CR>")
 vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
 vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
 
+vim.keymap.set("n", "<leader>bn", "<CMD>bnext<cr>")
+vim.keymap.set("n", "<leader>bp", "<CMD>bnext<cr>")
+vim.keymap.set("n", "<leader>tb", "<CMD>Telescope buffers<cr>")
+vim.keymap.set("n", "<leader>bc", "<CMD>bdelete<cr>")
+
 vim.keymap.set("n", "J", "mzJ`z") -- Append line under to current line
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
