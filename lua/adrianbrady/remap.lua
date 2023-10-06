@@ -41,7 +41,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("i", "jk", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = 'LSP format buf' })
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = 'format buf' })
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
