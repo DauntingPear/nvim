@@ -7,12 +7,28 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  use 'mhinz/vim-startify'
+
+
+
+  use {
+    'jedrzejboczar/possession.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+  }
+
+  use 'wellle/targets.vim'
+
   use {
     'tamton-aquib/duck.nvim',
     config = function()
       vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, { desc = 'make duck' })
       vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, { desc = 'cook duck' })
     end
+  }
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
   }
 
 
