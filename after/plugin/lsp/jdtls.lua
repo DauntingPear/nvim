@@ -27,6 +27,8 @@ local function get_jdtls_paths()
 
   path.data_dir = vim.fn.stdpath('cache') .. '/nvim-jdtls'
 
+  print(path.data_dir)
+
   local jdtls_install = require('mason-registry')
     .get_package('jdtls')
     :get_install_path()
@@ -148,7 +150,9 @@ local function jdtls_setup(event)
   local jdtls = require('jdtls')
 
   local path = get_jdtls_paths()
+  print(get_jdtls_paths())
   local data_dir = path.data_dir .. '/' ..  vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+  print(data_dir)
 
   if cache_vars.capabilities == nil then
     jdtls.extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
@@ -221,12 +225,6 @@ local function jdtls_setup(event)
       --     enabled = 'all' -- literals, all, none
       --   }
       -- },
-      format = {
-        enabled = true,
-        -- settings = {
-        --   profile = 'asdf'
-        -- },
-      }
     },
     signatureHelp = {
       enabled = true,
@@ -270,6 +268,14 @@ local function jdtls_setup(event)
     root_dir = jdtls.setup.find_root(root_files),
     flags = {
       allow_incremental_sync = true,
+    },
+    handlers = {
+      ['language/status'] = function(_, result)
+        -- Print or whatever.
+      end,
+      ['$/progress'] = function(_, result, ctx)
+        -- disable progress updates.
+      end,
     },
     init_options = {
       bundles = path.bundles,
