@@ -2,7 +2,7 @@ local notify = require("notify")
 
 notify.setup({
     background_colour = "NotifyBackground",
-    fps = 30,
+    fps = 60,
     icons = {
       DEBUG = "",
       ERROR = "",
@@ -11,10 +11,11 @@ notify.setup({
       WARN = ""
     },
     level = 2,
+    max_width = 70,
     minimum_width = 50,
     render = "default",
     stages = "fade_in_slide_out",
-    timeout = 5000,
-    top_down = true,
+    timeout = 2000,
+    top_down = false,
     background_colour = "#000000",
 })
