@@ -36,6 +36,4 @@ end
 
 vim.keymap.set('n', '<leader>ne', edit_neovim, { desc = 'edit neovim' })
 
-
-
 require('telescope').load_extension('git_diffs')
