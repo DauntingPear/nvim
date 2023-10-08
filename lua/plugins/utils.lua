@@ -19,7 +19,7 @@ return {
 
 
     -- Lua
-    "folke/which-key.nvim",
+    { 'echasnovski/mini.clue', version = false },
 
     {
         'folke/noice.nvim',
