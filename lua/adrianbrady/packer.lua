@@ -11,129 +11,129 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+return require('lazy').setup({    -- Packer can manage itself
+
+    {"akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
-    end}
+    end},
 
-    use "goolord/alpha-nvim"
+    'goolord/alpha-nvim',
 
-    use {
+    {
         "SmiteshP/nvim-navic",
-        requires = "neovim/nvim-lspconfig"
-    }
+        dependencies = "neovim/nvim-lspconfig"
+    },
 
-    use {
+    {
         'jedrzejboczar/possession.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
-    }
+        dependencies = { 'nvim-lua/plenary.nvim' },
+    },
 
-    use 'wellle/targets.vim'
+    'wellle/targets.vim',
 
-    use {
+    {
         'tamton-aquib/duck.nvim',
         config = function()
             vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, { desc = 'make duck' })
             vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, { desc = 'cook duck' })
         end
-    }
+    },
 
-    use {
+    {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
-    }
+    },
 
 
-    use {
+    {
         "ray-x/lsp_signature.nvim",
-    }
+    },
 
-    use({
+    {
         "utilyre/barbecue.nvim",
         tag = "*",
-        requires = {
+        dependencies = {
             "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons", -- optional dependency
         },
-        after = "nvim-web-devicons", -- keep this if you're using NvChad
-    })
+    },
 
     -- Lua
-    -- use "folke/which-key.nvim"
-    use 'echasnovski/mini.clue'
+    -- "folke/which-key.nvim",
+    'echasnovski/mini.clue',
 
-    use {
+    {
         'folke/noice.nvim',
-        requires = {
+        dependencies = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
         }
-    }
+    },
 
-    use {
+    {
         'paopaol/telescope-git-diffs.nvim',
-        requires = {
+        dependencies = {
             "nvim-lua/plenary.nvim",
             "sindrets/diffview.nvim",
         },
-    }
+    },
 
-    use "ThePrimeagen/git-worktree.nvim"
+    'ThePrimeagen/git-worktree.nvim',
 
     -- Lua
-    use 'abecodes/tabout.nvim'
+    'abecodes/tabout.nvim',
 
-    use {
+    {
         'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }
+        dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
+    },
 
     -- Lua
 
-    use 'anuvyklack/hydra.nvim'
+    'anuvyklack/hydra.nvim',
 
-    use 'mfussenegger/nvim-jdtls'
+    'mfussenegger/nvim-jdtls',
 
 
-    use 'mfussenegger/nvim-dap'
-    use 'rcarriga/nvim-dap-ui'
-    use 'theHamsta/nvim-dap-virtual-text'
-    use 'nvim-telescope/telescope-dap.nvim'
+    'mfussenegger/nvim-dap',
+    'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
+    'nvim-telescope/telescope-dap.nvim',
 
-    use {
+    {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
         -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
+        dependencies = { {'nvim-lua/plenary.nvim'} }
+    },
 
-    use { "catppuccin/nvim", as = "catppuccin" }
-    use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    { "catppuccin/nvim", name = "catppuccin" },
+    'nvim-treesitter/nvim-treesitter',
 
-    use ('nvim-treesitter/playground')
-    use ('theprimeagen/harpoon')
-    use ('mbbill/undotree')
-    use ('tpope/vim-fugitive')
+    'nvim-treesitter/playground',
+    'theprimeagen/harpoon',
+    'mbbill/undotree',
+    'tpope/vim-fugitive',
 
-    use {
+    {
         "ThePrimeagen/refactoring.nvim",
-        requires = {
+        dependencies = {
             {"nvim-lua/plenary.nvim"},
             {"nvim-treesitter/nvim-treesitter"}
         }
-    }
+    },
 
-    use {
+    {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
-        requires = {
+        dependencies = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},             -- Required
             {                                      -- Optional
             'williamboman/mason.nvim',
-            run = function()
+            build = function()
                 pcall(vim.cmd, 'MasonUpdate')
             end,
         },
@@ -143,8 +143,9 @@ return require('packer').startup(function(use)
         {'hrsh7th/nvim-cmp'},     -- Required
         {'hrsh7th/cmp-nvim-lsp'}, -- Required
         {'L3MON4D3/LuaSnip'},     -- Required
-    }
-}
+        }
+    },
 
 
-end)
+})
+
