@@ -1,5 +1,5 @@
 require("adrianbrady.remap")
-require("adrianbrady.packer")
+require("adrianbrady.lazy")
 require("adrianbrady.set")
 
 return {
