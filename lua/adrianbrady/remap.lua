@@ -16,6 +16,8 @@ vim.keymap.set("n", "<leader>B", ":lua require'dap'.toggle_breakpoint()<CR>")
 vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
 vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
 
+vim.keymap.set("n", "<leader>lg", ":lua require('utils.term').git_client_toggle()<CR>")
+
 vim.keymap.set("n", "<leader>bn", "<CMD>bnext<cr>")
 vim.keymap.set("n", "<leader>bp", "<CMD>bnext<cr>")
 vim.keymap.set("n", "<leader>tb", "<CMD>Telescope buffers<cr>")
@@ -64,5 +66,5 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader><leader>", function()
-  vim.cmd("so")
+    vim.cmd("so")
 end)
