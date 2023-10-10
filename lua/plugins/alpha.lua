@@ -42,7 +42,9 @@ return {
         dashboard.section.buttons.val = {
             dashboard.button( "e", "New File", ":e<CR>"),
             dashboard.button( "f", "Find files", ":Telescope find_files<CR>"),
-            dashboard.button( "w", "Find WS file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
+            dashboard.button( "d", "Dotfiles", ":lua require('utils.finders').find_dotfiles()<CR>"),
+            dashboard.button( "w", "Find Workspace", ":lua require('utils.finders').find_workspace()<CR>"),
+            dashboard.button( "n", "Neovim config", ":lua require('utils.finders').find_nvim_cfg()<CR>"),
             dashboard.button( "r", "Recent", ":Telescope oldfiles<CR>"),
             dashboard.button( "q", "Quit NVIM", ":qa<CR>"),
         }
