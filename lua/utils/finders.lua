@@ -3,9 +3,11 @@ local M = {}
 function M.find_dotfiles()
     require("telescope.builtin").find_files {
         prompt_title = "<Dotfiles>",
-        cwd = "~/.config/nvim",
+        cwd = "~/.config",
     }
 end
+
+vim.keymap.set("n", "<leader>fd", ":lua require('utils.finders').find_dotfiles()<CR>")
 
 function M.find_nvim_cfg()
     require("telescope.builtin").find_files {
@@ -14,12 +16,16 @@ function M.find_nvim_cfg()
     }
 end
 
-function M.find_workspace(prompt_bufnr)
-    local selection = require("telescope.actions.state").get_selected_entry()
-    local dir = vim.fn.fnamemodify(selection.path, ":p:h")
-    require("telescope.actions").close(prompt_bufnr)
-    vim.cmd(string.format("silent lcd %s", dir))
+vim.keymap.set("n", "<leader>fn", ":lua require('utils.finders').find_nvim_cfg()<CR>")
+
+function M.find_workspace()
+    require("telescope.builtin").find_files {
+        prompt_title = "Workspace",
+        cwd = "~/Workspace",
+    }
 end
+
+vim.keymap.set("n", "<leader>fw", ":lua require('utils.finders').find_workspace()<CR>")
 
 function M.find_files_from_project_git_root()
   local function is_git_repo()
@@ -38,5 +44,7 @@ function M.find_files_from_project_git_root()
   end
   require("telescope.builtin").find_files(opts)
 end
+
+vim.keymap.set("n", "<leader>fg", ":lua require('utils.finders').find_files_from_project_git_root()<CR>")
 
 return M
