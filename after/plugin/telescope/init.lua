@@ -35,5 +35,6 @@ local function edit_neovim()
 end
 
 vim.keymap.set('n', '<leader>ne', edit_neovim, { desc = 'edit neovim' })
+vim.keymap.set('n', '<leader>tls', builtin.lsp_document_symbols, { desc = 'lsp document symbols' })
 
 require('telescope').load_extension('git_diffs')
