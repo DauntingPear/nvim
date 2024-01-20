@@ -52,6 +52,7 @@ cmp.setup({
     }
 })
 
+
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on(
   'confirm_done',
@@ -69,6 +70,7 @@ require('mini.clue').setup({
     { mode = 'n', keys = '<Leader>l', desc = '+LSP' },
   },
 })
+
 
 local navic = require("nvim-navic")
 
@@ -88,6 +90,8 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>lrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
     require('mini.clue').setup({})
+
+    require('lspconfig.ui.windows').default_options.border = 'single'
 
     if client.name == "jdt.ls" then
       require("jdtls").setup_dap { hotcodereplace = "auto" }
