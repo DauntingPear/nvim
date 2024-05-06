@@ -12,7 +12,7 @@ return {
   cmd = 'Neotree',
   keys = {
     { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
-    { '<leader>pv', ':Neotree position=current<CR>', { desc = 'Neotree' } },
+    { '<leader>pt', ':Neotree position=current<CR>', { desc = 'Neotree' } },
     { '<leader>pg', ':Neotree float git_status<CR>', { desc = 'Neotree Git Status' } },
   },
   opts = {
