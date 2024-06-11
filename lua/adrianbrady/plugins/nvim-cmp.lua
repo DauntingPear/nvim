@@ -1,11 +1,14 @@
 return {
+  'hrsh7th/cmp-nvim-lsp-signature-help',
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
+    lazy = false,
     event = 'InsertEnter',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
       {
         'L3MON4D3/LuaSnip',
+        lazy = false,
         build = (function()
           -- Build Step is needed for regex support in snippets.
           -- This step is not supported in many windows environments.
@@ -19,12 +22,12 @@ return {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -39,9 +42,38 @@ return {
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-      luasnip.config.setup {}
+      local types = require 'luasnip.util.types'
+      luasnip.setup {
+        history = true,
+        native = false,
+        updateevents = 'TextChanged,TextChangedI',
+
+        enable_autosnippets = true,
+
+        ext_opts = {
+          [types.choiceNode] = {
+            active = {
+              virt_text = { { '<-', 'Error' } },
+            },
+          },
+        },
+      }
 
       cmp.setup {
+        appearance = {
+          menu = {
+            direction = 'above',
+          },
+        },
+        view = {
+          docs = {
+            auto_open = false,
+          },
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -103,7 +135,7 @@ return {
         },
         sources = {
           { name = 'nvim_lsp' },
-          { name = 'luasnip' },
+          { name = 'luasnip', option = { use_show_condition = false } },
           { name = 'path' },
         },
       }
