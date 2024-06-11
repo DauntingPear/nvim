@@ -1,19 +1,50 @@
+function ColorMyPencils(color)
+  color = color or 'rose-pine'
+  print(color)
+  vim.cmd.colorscheme(color)
+
+  vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+  vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+  vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+
+  vim.api.nvim_set_hl(0, 'DiagnosticSignOk', { link = 'DiagnosticOK' })
+  vim.api.nvim_set_hl(0, 'DiagnosticSignHint', { link = 'DiagnosticHint' })
+  vim.api.nvim_set_hl(0, 'DiagnosticSignInfo', { link = 'DiagnosticInfo' })
+  vim.api.nvim_set_hl(0, 'DiagnosticSignWarn', { link = 'DiagnosticWarn' })
+  vim.api.nvim_set_hl(0, 'DiagnosticSignError', { link = 'DiagnosticError' })
+end
+
 return {
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
+    -- 'folke/tokyonight.nvim',
+    -- 'rebelot/kanagawa.nvim',
+    -- 'ellisonleao/gruvbox.nvim',
+    -- 'nyoom-engineering/nyoom.nvim',
+    -- 'jacoborus/tender.vim',
+    -- 'savq/melange-nvim',
+    -- 'AlexvZyl/nordic.nvim',
+    -- 'rmehri01/onenord.nvim',
+    lazy = false,
+    -- 'rose-pine/neovim',
+    'ellisonleao/gruvbox.nvim',
+
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
+      require('gruvbox').setup {
+        contrast = 'hard',
+      }
+      ColorMyPencils 'gruvbox'
+      vim.cmd.hi 'Comment gui=none'
+
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
 
       -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
     end,
   },
 }
