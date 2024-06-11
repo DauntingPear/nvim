@@ -8,12 +8,20 @@ return {
     opts = {
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
+        gitsigns.setup {
+          sign_priority = 100,
+        }
 
         local function map(mode, l, r, opts)
           opts = opts or {}
           opts.buffer = bufnr
           vim.keymap.set(mode, l, r, opts)
         end
+
+        local blameLineColor = vim.api.nvim_get_color_by_name 'comment'
+        vim.api.nvim_set_hl(0, 'GitsignsCurrentLineBlame', { fg = blameLineColor })
+        local signColumnColor = vim.api.nvim_get_color_by_name 'GruvboxBg0'
+        vim.api.nvim_set_hl(0, 'SignColumn', { fg = signColumnColor })
 
         -- Navigation
         map('n', ']c', function()
