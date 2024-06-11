@@ -99,6 +99,14 @@ return {
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
           ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<C-k>'] = function()
+            local getDocsState = cmp.visible_docs()
+            if getDocsState then
+              cmp.close_docs()
+            else
+              cmp.open_docs()
+            end
+          end,
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
