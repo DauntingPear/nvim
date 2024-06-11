@@ -145,6 +145,7 @@ return {
           { name = 'nvim_lsp' },
           { name = 'luasnip', option = { use_show_condition = false } },
           { name = 'path' },
+          { name = 'nvim_lsp_signature_help' },
         },
       }
     end,
