@@ -15,6 +15,9 @@ vim.opt.number = true
 -- vim.opt.relativenumber = true
 
 vim.opt.mouse = 'a' -- Enable mouse mode, can be useful for resizing splits for example!
+vim.opt.tabstop = 4
+vim.opt.relativenumber = true
+vim.opt.shiftwidth = 4
 vim.opt.showmode = false -- Don't show the mode, since it's already in the status line
 vim.opt.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim. See `:help 'clipboard'`
 vim.opt.breakindent = true -- Enable break indent
