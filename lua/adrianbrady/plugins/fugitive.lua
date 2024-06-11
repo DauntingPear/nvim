@@ -11,47 +11,22 @@ return {
         if vim.bo.ft ~= 'fugitive' then
           return
         end
-
-        local bufnr = vim.api.nvim_get_current_buf()
-        vim.keymap.set('n', '<leader>p', function()
-          vim.cmd.Git 'push'
-        end, {
-          buffer = bufnr,
-          remap = false,
-          desc = 'git [p]ush',
-        })
-
-        -- rebase always
-        vim.keymap.set('n', '<leader>P', function()
-          vim.cmd.Git { 'pull', '--rebase' }
-        end, {
-          buffer = bufnr,
-          remap = false,
-          desc = 'git [p]ull --rebase',
-        })
-
-        -- NOTE: It allows me to easily set the branch i am pushing and any tracking
-        -- needed if i did not set the branch up correctly
-        vim.keymap.set('n', '<leader>t', ':Git push -u origin ', {
-          buffer = bufnr,
-          remap = false,
-          desc = 'git push -u origin',
-        })
       end,
     })
-
     local wk = require 'which-key'
 
     wk.register {
-      ['<leader>gm'] = { '<cmd>G<cr>', 'Fugitive [M]enu' },
-      ['<leader>gc'] = { '<cmd>Git commit<cr>', 'Git [C]ommit' },
-      ['<leader>gd'] = { '<cmd>Git diff<cr>', 'Git [D]iff' },
-      ['<leader>gl'] = { '<cmd>Git log<cr>', 'Git [L]og' },
-      ['<leader>gb'] = { '<cmd>Git blame<cr>', 'Git [B]lame' },
-      ['<leader>gt'] = {
-        name = 'Git [T]ool',
-        m = { '<cmd>Git mergetool<cr>', 'Git [M]ergetool' },
-        d = { '<cmd>Git difftool<cr>', 'Git [D]ifftool' },
+      ['<leader>g'] = {
+        ['g'] = { '<cmd>G<cr>', 'Fugitive menu' },
+        ['c'] = { '<cmd>Git commit<cr>', 'Git [C]ommit' },
+        ['d'] = { '<cmd>Git diff<cr>', 'Git [D]iff' },
+        ['D'] = { '<cmd>Git diff --staged<cr>', 'Git diff --[S]taged' },
+        ['l'] = { '<cmd>Git log<cr>', 'Git [L]og' },
+        ['o'] = { '<cmd>Git log --oneline --decorate --graph<cr>', 'Git Log --[o]neline' },
+        ['b'] = { '<cmd>Git blame<cr>', 'Git [B]lame' },
+        ['t'] = { '<cmd>Git push -u origin<cr>', 'Git Push Origin' },
+        ['P'] = { '<cmd>Git pull --rebase<cr>', 'Git [P]ull --rebase' },
+        ['p'] = { '<cmd>Git pull<cr>', 'Git Push Origin' },
       },
     }
   end,
