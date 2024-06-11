@@ -15,6 +15,8 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+vim.keymap.set('n', '<C-f>', '<cmd>!tmux neww tmux-sessionizer<CR>')
+
 -- Diagnostic Keymaps
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
