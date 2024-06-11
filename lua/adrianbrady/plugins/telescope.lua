@@ -62,6 +62,7 @@ return {
         --   },
         -- },
         -- pickers = {}
+        vim.api.nvim_set_hl(0, 'TelescopeBorder', { ctermbg = 220 }),
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
