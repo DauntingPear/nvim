@@ -16,8 +16,25 @@ return {
     { '<leader>pg', ':Neotree float git_status<CR>', { desc = 'Neotree Git Status' } },
   },
   opts = {
+    default_component_configs = {
+      git_status = {
+        symbols = {
+          added = '', -- or "✚", but this is redundant info if you use git_status_colors on the name
+          modified = '', -- or "", but this is redundant info if you use git_status_colors on the name
+          deleted = 'D', -- this can only be used in the git_status source
+          renamed = 'r', -- this can only be used in the git_status source
+          -- Status type
+          untracked = '?',
+          ignored = '-',
+          unstaged = 'M',
+          staged = 'M',
+          conflict = '!',
+        },
+      },
+    },
     filesystem = {
       window = {
+        width = 24,
         mappings = {
           ['\\'] = 'close_window',
         },
